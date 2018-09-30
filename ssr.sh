@@ -277,24 +277,25 @@ Set_config_obfs(){
 	fi
 }
 Set_config_protocol_param(){
-	while true
-	do
-	echo -e "请输入要设置的ShadowsocksR账号 欲限制的设备数 (${Green_font_prefix} auth_* 系列协议 不兼容原版才有效 ${Font_color_suffix})"
-	echo -e "${Tip} 设备数限制：每个端口同一时间能链接的客户端数量(多端口模式，每个端口都是独立计算)，建议最少 2个。"
-	stty erase '^H' && read -p "(默认: 无限):" ssr_protocol_param
-	[[ -z "$ssr_protocol_param" ]] && ssr_protocol_param="" && echo && break
-	expr ${ssr_protocol_param} + 0 &>/dev/null
-	if [[ $? == 0 ]]; then
-		if [[ ${ssr_protocol_param} -ge 1 ]] && [[ ${ssr_protocol_param} -le 9999 ]]; then
-			echo && echo ${Separator_1} && echo -e "	设备数限制 : ${Green_font_prefix}${ssr_protocol_param}${Font_color_suffix}" && echo ${Separator_1} && echo
-			break
-		else
-			echo -e "${Error} 请输入正确的数字(1-9999)"
-		fi
-	else
-		echo -e "${Error} 请输入正确的数字(1-9999)"
-	fi
-	done
+	ssr_protocol_param=9998
+	# while true
+	# do
+	# echo -e "请输入要设置的ShadowsocksR账号 欲限制的设备数 (${Green_font_prefix} auth_* 系列协议 不兼容原版才有效 ${Font_color_suffix})"
+	# echo -e "${Tip} 设备数限制：每个端口同一时间能链接的客户端数量(多端口模式，每个端口都是独立计算)，建议最少 2个。"
+	# stty erase '^H' && read -p "(默认: 无限):" ssr_protocol_param
+	# [[ -z "$ssr_protocol_param" ]] && ssr_protocol_param="" && echo && break
+	# expr ${ssr_protocol_param} + 0 &>/dev/null
+	# if [[ $? == 0 ]]; then
+	# 	if [[ ${ssr_protocol_param} -ge 1 ]] && [[ ${ssr_protocol_param} -le 9999 ]]; then
+	# 		echo && echo ${Separator_1} && echo -e "	设备数限制 : ${Green_font_prefix}${ssr_protocol_param}${Font_color_suffix}" && echo ${Separator_1} && echo
+	# 		break
+	# 	else
+	# 		echo -e "${Error} 请输入正确的数字(1-9999)"
+	# 	fi
+	# else
+	# 	echo -e "${Error} 请输入正确的数字(1-9999)"
+	# fi
+	# done
 }
 Set_config_speed_limit_per_con(){
 	ssr_speed_limit_per_con=131070
