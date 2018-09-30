@@ -8,9 +8,8 @@ export PATH
 #	Version: 2.0.37
 #	Author: Toyo
 #	Blog: https://doub.io/ss-jc42/
-#   bash ./ssr.sh yourpasswd
 #=================================================
-pw="$1"
+
 sh_ver="2.0.37"
 filepath=$(cd "$(dirname "$0")"; pwd)
 file=$(echo -e "${filepath}"|awk -F "$0" '{print $1}')
@@ -248,7 +247,7 @@ Set_config_port(){
 	ssr_port="9009"
 }
 Set_config_password(){
-	ssr_password="${pw}"
+	ssr_password="Yzn6684?+"
 	
 }
 Set_config_method(){
