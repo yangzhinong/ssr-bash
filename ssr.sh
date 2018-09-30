@@ -298,45 +298,30 @@ Set_config_protocol_param(){
 	done
 }
 Set_config_speed_limit_per_con(){
-	while true
-	do
-	echo -e "请输入要设置的每个端口 单线程 限速上限(单位：KB/S)"
-	echo -e "${Tip} 单线程限速：每个端口 单线程的限速上限，多线程即无效。"
-	stty erase '^H' && read -p "(默认: 无限):" ssr_speed_limit_per_con
-	[[ -z "$ssr_speed_limit_per_con" ]] && ssr_speed_limit_per_con=0 && echo && break
-	expr ${ssr_speed_limit_per_con} + 0 &>/dev/null
-	if [[ $? == 0 ]]; then
-		if [[ ${ssr_speed_limit_per_con} -ge 1 ]] && [[ ${ssr_speed_limit_per_con} -le 131072 ]]; then
-			echo && echo ${Separator_1} && echo -e "	单线程限速 : ${Green_font_prefix}${ssr_speed_limit_per_con} KB/S${Font_color_suffix}" && echo ${Separator_1} && echo
-			break
-		else
-			echo -e "${Error} 请输入正确的数字(1-131072)"
-		fi
-	else
-		echo -e "${Error} 请输入正确的数字(1-131072)"
-	fi
-	done
+	ssr_speed_limit_per_con=131070
+	
 }
 Set_config_speed_limit_per_user(){
-	while true
-	do
-	echo
-	echo -e "请输入要设置的每个端口 总速度 限速上限(单位：KB/S)"
-	echo -e "${Tip} 端口总限速：每个端口 总速度 限速上限，单个端口整体限速。"
-	stty erase '^H' && read -p "(默认: 无限):" ssr_speed_limit_per_user
-	[[ -z "$ssr_speed_limit_per_user" ]] && ssr_speed_limit_per_user=0 && echo && break
-	expr ${ssr_speed_limit_per_user} + 0 &>/dev/null
-	if [[ $? == 0 ]]; then
-		if [[ ${ssr_speed_limit_per_user} -ge 1 ]] && [[ ${ssr_speed_limit_per_user} -le 131072 ]]; then
-			echo && echo ${Separator_1} && echo -e "	端口总限速 : ${Green_font_prefix}${ssr_speed_limit_per_user} KB/S${Font_color_suffix}" && echo ${Separator_1} && echo
-			break
-		else
-			echo -e "${Error} 请输入正确的数字(1-131072)"
-		fi
-	else
-		echo -e "${Error} 请输入正确的数字(1-131072)"
-	fi
-	done
+	ssr_speed_limit_per_user=131070
+	# while true
+	# do
+	# echo
+	# echo -e "请输入要设置的每个端口 总速度 限速上限(单位：KB/S)"
+	# echo -e "${Tip} 端口总限速：每个端口 总速度 限速上限，单个端口整体限速。"
+	# stty erase '^H' && read -p "(默认: 无限):" ssr_speed_limit_per_user
+	# [[ -z "$ssr_speed_limit_per_user" ]] && ssr_speed_limit_per_user=0 && echo && break
+	# expr ${ssr_speed_limit_per_user} + 0 &>/dev/null
+	# if [[ $? == 0 ]]; then
+	# 	if [[ ${ssr_speed_limit_per_user} -ge 1 ]] && [[ ${ssr_speed_limit_per_user} -le 131072 ]]; then
+	# 		echo && echo ${Separator_1} && echo -e "	端口总限速 : ${Green_font_prefix}${ssr_speed_limit_per_user} KB/S${Font_color_suffix}" && echo ${Separator_1} && echo
+	# 		break
+	# 	else
+	# 		echo -e "${Error} 请输入正确的数字(1-131072)"
+	# 	fi
+	# else
+	# 	echo -e "${Error} 请输入正确的数字(1-131072)"
+	# fi
+	# done
 }
 Set_config_all(){
 	Set_config_port
