@@ -1341,8 +1341,7 @@ echo -e "  ShadowsocksR 一键管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_
  ${Green_font_prefix}15.${Font_color_suffix} 升级脚本
  "
 menu_status
-# echo && stty erase '^H' && read -p "请输入数字 [1-15]：" num
-num="3"
+echo && stty erase '^H' && read -p "请输入数字 [1-15]：" num
 case "$num" in
 	1)
 	Install_SSR
