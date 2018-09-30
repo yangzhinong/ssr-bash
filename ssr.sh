@@ -245,23 +245,7 @@ View_User(){
 }
 # 设置 配置信息
 Set_config_port(){
-	while true
-	do
-	echo -e "请输入要设置的ShadowsocksR账号 端口"
-	stty erase '^H' && read -p "(默认: 9009):" ssr_port
-	[[ -z "$ssr_port" ]] && ssr_port="9009"
-	expr ${ssr_port} + 0 &>/dev/null
-	if [[ $? == 0 ]]; then
-		if [[ ${ssr_port} -ge 1 ]] && [[ ${ssr_port} -le 65535 ]]; then
-			echo && echo ${Separator_1} && echo -e "	端口 : ${Green_font_prefix}${ssr_port}${Font_color_suffix}" && echo ${Separator_1} && echo
-			break
-		else
-			echo -e "${Error} 请输入正确的数字(1-65535)"
-		fi
-	else
-		echo -e "${Error} 请输入正确的数字(1-65535)"
-	fi
-	done
+	ssr_port="9009"
 }
 Set_config_password(){
 	ssr_password="${pw}"
@@ -288,8 +272,7 @@ Set_config_obfs(){
 	
 	echo && echo ${Separator_1} && echo -e "	混淆 : ${Green_font_prefix}${ssr_obfs}${Font_color_suffix}" && echo ${Separator_1} && echo
 	if [[ ${ssr_obfs} != "plain" ]]; then
-			stty erase '^H' && read -p "是否设置 混淆插件兼容原版(_compatible)？[Y/n]" ssr_obfs_yn
-			[[ -z "${ssr_obfs_yn}" ]] && ssr_obfs_yn="y"
+			ssr_obfs_yn="y"
 			[[ $ssr_obfs_yn == [Yy] ]] && ssr_obfs=${ssr_obfs}"_compatible"
 			echo
 	fi
